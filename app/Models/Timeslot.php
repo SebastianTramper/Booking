@@ -10,6 +10,9 @@ class Timeslot extends Model
 {
     use HasFactory;
 
+    /**
+     * @return BelongsTo
+     */
     public function package(): BelongsTo
     {
         return $this->belongsTo(Package::class);

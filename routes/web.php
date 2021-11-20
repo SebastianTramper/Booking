@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\TimeslotController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,16 @@ Route::get('/packages/edit/{id}', [PackageController::class, 'edit'])->name("pac
 Route::put('/packages/update/{id}', [PackageController::class, 'update'])->name("packages.update");
 Route::delete('/packages/delete/{id}', [PackageController::class, 'destroy'])->name("packages.delete");
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+Route::get('/timeslots/', [TimeslotController::class, 'index'])->name("timeslots.index");
+Route::get('/timeslots/create', [TimeslotController::class, 'create'])->name("timeslots.create");
+Route::post('/timeslots/store', [TimeslotController::class, 'store'])->name("timeslots.store");
+Route::get('/timeslots/edit/{timeslot}', [TimeslotController::class, 'edit'])->name("timeslots.edit");
+Route::put('/timeslots/update/{timeslot}', [TimeslotController::class, 'update'])->name("timeslots.update");
+Route::delete('/timeslots/delete/{timeslot}', [TimeslotController::class, 'destroy'])->name("timeslots.delete");
+
+
+Route::get('/dashboard', function () { return view('dashboard'); })->middleware(['auth'])->name('dashboard');
 
 
 require __DIR__.'/auth.php';

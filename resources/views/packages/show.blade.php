@@ -1,6 +1,3 @@
-
-
-
 <table class="table-auto">
     <thead>
     <tr>
@@ -42,3 +39,7 @@
     </tr>
     </tbody>
 </table>
+
+<a href="{{ route("timeslots.index", $id) }}">Bekijk hier de beschikbaare tijden</a>
+
+

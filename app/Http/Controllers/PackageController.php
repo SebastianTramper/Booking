@@ -38,9 +38,10 @@ class PackageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     * @param package $package
      * @return RedirectResponse
      */
-    public function store(Request $request, Package $package)
+    public function store(Request $request, Package $package): RedirectResponse
     {
         $this->validateFormInput($request);
 
@@ -56,8 +57,8 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param package $package
-     * @return Application|Factory|View|Response
+     * @param Request $request
+     * @return Application|Factory|View
      */
     public function show(Request $request)
     {
@@ -74,8 +75,8 @@ class PackageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param package $package
-     * @return Application|Factory|View|Response
+     * @param Request $request
+     * @return Application|Factory|View
      */
     public function edit(Request $request)
     {
@@ -114,8 +115,8 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param package $package
-     * @return Application|Factory|View|Response
+     * @param Request $request
+     * @return Application|Factory|View
      */
     public function destroy(Request $request)
     {
@@ -126,7 +127,6 @@ class PackageController extends Controller
 
     /**
      * @param Request $request
-     * @param package $package
      */
     public function validateFormInput(Request $request): void
     {
