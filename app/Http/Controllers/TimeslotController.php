@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
 use App\Models\Timeslot;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -17,12 +18,12 @@ class TimeslotController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(Package $package)
     {
-        $timeslots = DB::table('timeslots')->get();
-
+        $timeslots = DB::table('timeslots')->where('package_id', '=', $package->id)->get();
         return view('timeslots.index', [
-            'timeslots' => $timeslots
+            'timeslots' => $timeslots,
+            'package' => $package
         ]);
     }
 
@@ -31,9 +32,11 @@ class TimeslotController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(Package $package)
     {
-        return view("timeslots.create");
+        return view("timeslots.create",[
+            "package" => $package
+        ]);
     }
 
     /**
@@ -49,10 +52,10 @@ class TimeslotController extends Controller
 
         $timeslot->date_from = $request->date_from;
         $timeslot->date_to = $request->date_to;
-        $timeslot->package_id = 3;
+        $timeslot->package_id = $timeslot->package->id;
         $timeslot->save();
 
-        return redirect()->route('timeslots.index');
+        return redirect()->route('timeslots.index',$timeslot->package->id);
     }
 
     /**

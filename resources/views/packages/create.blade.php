@@ -40,3 +40,4 @@
     </div>
 
 </form>
+<a href="{{ route("packages.index") }}">Terug naar arrangementen</a>

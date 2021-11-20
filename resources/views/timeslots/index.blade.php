@@ -1,5 +1,5 @@
 <div>
-    Bekijk hier alle tijdsloten van
+    Bekijk hier alle tijdsloten van <strong> {{ $package->name }} </strong>
 
     <table class="table-auto">
         <thead>
@@ -38,5 +38,6 @@
         <?php } ?>
         </tbody>
     </table>
-    <a href="{{ route("timeslots.create") }}">Maak nieuwe datum beschikbaar</a>
+    <a href="{{ route("timeslots.create", $package->id) }}">Maak nieuwe datum beschikbaar</a>
+    <a href="{{ route("packages.show", $package->id) }}">Terug naar het arrangement</a>
 </div>

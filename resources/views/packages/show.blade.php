@@ -40,6 +40,7 @@
     </tbody>
 </table>
 
-<a href="{{ route("timeslots.index", $id) }}">Bekijk hier de beschikbaare tijden</a>
+<a href="{{ route("timeslots.index",$id) }}">Bekijk hier de beschikbaare tijden</a>
 
 
+<a href="{{ route("packages.index") }}">Terug naar arrangementen</a>

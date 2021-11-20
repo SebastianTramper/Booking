@@ -1,4 +1,4 @@
-<form action="{{ route("timeslots.store") }}" method="POST">
+<form action="{{ route("timeslots.store", $package->id) }}" method="POST">
     @csrf
 
     <div>
@@ -22,3 +22,5 @@
         <input id="submit" type="submit" value="Opslaan">
     </div>
 </form>
+
+<a href="{{ route("timeslots.index", $package->id) }}">Terug naar tijdsloten</a>

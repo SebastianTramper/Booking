@@ -36,9 +36,17 @@
                 </a>
             </td>
             <td>
-                <a href="{{ route("packages.show", $package->id) }}">
-                    Bekijken
+                <a href="{{ route("timeslots.index", $package->id) }}">
+                    Beschikbare tijden
                 </a>
+            </td>
+            <td>
+                <form action="{{ route("packages.delete", $package->id) }}" method="POST">
+                    @csrf
+                    @method("Delete")
+
+                    <input type="submit" value="Verwijderen">
+                </form>
             </td>
         </tr>
    <?php } ?>
@@ -49,3 +57,5 @@
 <a href="{{ route('packages.create') }}">
     Maak een nieuwe arrangement
 </a>
+
+<a href="{{ route("packages.index") }}">Terug naar arrangementen</a>

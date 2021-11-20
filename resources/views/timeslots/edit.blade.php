@@ -22,3 +22,4 @@
         <input id="submit" type="submit" value="Opslaan">
     </div>
 </form>
+<a href="{{ route("timeslots.index") }}">Terug naar tijdsloten</a>
