@@ -1,7 +1,6 @@
 <form action="{{ route("packages.store") }}" method="POST">
     @csrf
 
-
     <div>
         <label for="name">Naam</label>
         <input id="name" name="name" type="text" class="@error('name') is-invalid @enderror">
@@ -10,6 +9,13 @@
         @enderror
     </div>
 
+    <div>
+        <label for="excerpt">Introductie</label>
+        <input id="excerpt" type="text" name="excerpt" class="@error('excerpt') is-invalid @enderror">
+        @error('excerpt')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
 
     <div>
         <label for="description">Beschrijving</label>

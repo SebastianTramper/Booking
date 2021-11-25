@@ -46,6 +46,7 @@ class PackageController extends Controller
         $this->validateFormInput($request);
 
         $package->name = $request->name;
+        $package->excerpt = $request->excerpt;
         $package->description = $request->description;
         $package->image_url = $request->image_url;
         $package->price = $request->price;
@@ -66,6 +67,7 @@ class PackageController extends Controller
         return view("packages.show", [
             "id" => $package->id,
             "name" => $package->name,
+            "excerpt" => $package->excerpt,
             "description" => $package->description,
             "image_url" => $package->image_url,
             "price" => $package->price
@@ -132,6 +134,7 @@ class PackageController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'excerpt' => 'required',
             'description' => 'required',
             'image_url' => 'required',
             'price' => 'required'

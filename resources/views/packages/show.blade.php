@@ -3,6 +3,7 @@
     <tr>
         <th>ID</th>
         <th>Naam</th>
+        <th>Introductie</th>
         <th>Beschrijving</th>
         <th>Afbeelding</th>
         <th>Prijs</th>
@@ -13,6 +14,9 @@
     <tr>
         <td>
             {{ $name }}
+        </td>
+        <td>
+            {{ $excerpt }}
         </td>
         <td>
             {{ $description }}

@@ -6,6 +6,7 @@
     <tr>
         <th>ID</th>
         <th>Naam</th>
+        <th>Introductie</th>
         <th>Beschrijving</th>
         <th>Afbeelding</th>
         <th>Prijs</th>
@@ -20,6 +21,9 @@
             </td>
             <td>
                 {{ $package->name }}
+            </td>
+            <td>
+                {{ $package->excerpt }}
             </td>
             <td>
                 {{ $package->description }}

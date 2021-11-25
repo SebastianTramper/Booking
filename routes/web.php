@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\TimeslotController;
+use App\Models\Package;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [HomeController::class, 'index'])->name("home.index");
+
 
 Route::get('/packages', [PackageController::class, 'index'])->name("packages.index");
 Route::get('/packages/show/{id}', [PackageController::class, 'show'])->name("packages.show");
@@ -37,7 +39,9 @@ Route::delete('/timeslots/delete/{timeslot}', [TimeslotController::class, 'destr
 Route::get('/timeslots/{package}', [TimeslotController::class, 'index'])->name("timeslots.index");
 
 
-Route::get('/dashboard', function () { return view('dashboard'); })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
