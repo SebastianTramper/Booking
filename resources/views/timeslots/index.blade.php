@@ -41,7 +41,7 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route("timeslots.edit", $timeslot->id . '/package/' . $package->id) }}"
+                                        <a href="{{ route("timeslots.edit", $timeslot->id) }}"
                                            class="text-blue hover:text-indigo-900">
                                             Aanpassen
                                         </a>
