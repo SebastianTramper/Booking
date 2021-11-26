@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Type\Time;
 
 class TimeslotController extends Controller
 {
@@ -46,13 +47,13 @@ class TimeslotController extends Controller
      * @param Timeslot $timeslot
      * @return RedirectResponse
      */
-    public function store(Request $request, Timeslot $timeslot): RedirectResponse
+    public function store(Request $request,Timeslot $timeslot, Package $package): RedirectResponse
     {
-        $this->validateFormInput($request);
 
+        $this->validateFormInput($request);
         $timeslot->date_from = $request->date_from;
         $timeslot->date_to = $request->date_to;
-        $timeslot->package_id = $timeslot->package->id;
+        $timeslot->package_id = $package->id;
         $timeslot->save();
 
         return redirect()->route('timeslots.index',$timeslot->package->id);

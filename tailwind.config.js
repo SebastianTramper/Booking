@@ -20,7 +20,11 @@ module.exports = {
             'xl': '1040px', // => @media (min-width: 1280px) { ... }
         },
         colors: {
-            gray: '#f4f4f4'
+            gray: '#f4f4f4',
+            green: 'rgba(16, 185, 129)',
+            blue:  '#6366F1',
+            white: '#fff',
+            red: '#EF4444'
         }
     },
 

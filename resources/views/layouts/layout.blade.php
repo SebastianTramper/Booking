@@ -26,6 +26,9 @@
 
         </div>
         @yield("packages")
+        <section>
+            @yield("content")
+        </section>
     </main>
 
 </body>
