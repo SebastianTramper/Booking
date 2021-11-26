@@ -7,20 +7,13 @@
     </div>
 @endsection
 @section('content')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    Je bent ingelogd!
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section>
-        <div class="container">
-            <a href="{{ route('packages.index') }}" class="">Beheer arrangementen</a>
-            <a href="/appointments" class="">Bekijk alle aanmeldingen</a>
+        <div class="container mx-auto py-10">
+            <div class="grid grid-cols-3 gap-4">
+                <a href="{{ route('packages.index') }}" class="text-center border-opacity-20 border hover:bg-blue py-20">Beheer arrangementen</a>
+                <a href="/appointments" class="text-center border-opacity-20 border hover:bg-green py-20">Bekijk alle aanmeldingen</a>
+            </div>
+
         </div>
     </section>
 @endsection
