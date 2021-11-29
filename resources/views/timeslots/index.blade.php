@@ -47,14 +47,6 @@
                                         </a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route("timeslots.index", $timeslot->id) }}"
-                                           class="text-green hover:text-indigo-900">
-                                            Beschikbare tijden
-                                        </a>
-                                    </td>
-
-
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <form action="{{ route("timeslots.delete", $timeslot->id) }}" method="POST"
                                               class="text-red bg-white cursor-pointer">
                                             @csrf
