@@ -69,6 +69,7 @@ class TimeslotController extends Controller
         return view("timeslots.edit", [
             "id" => $timeslot->id,
             "package_id" => $timeslot->package->id,
+            "package_name" => $timeslot->package->name,
             "date_from" => $timeslot->date_from,
             "date_to" => $timeslot->date_to,
         ]);
