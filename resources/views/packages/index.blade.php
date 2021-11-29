@@ -1,7 +1,10 @@
 @extends("layouts.app")
 
 @section('content')
-    <section class="container mx-auto mt-10 xl:mt-12">
+    <section class="container mx-auto ">
+        <div class="my-10">
+            <h1 class="text-3xl"> Arrangementen </h1>
+        </div>
 
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

@@ -59,7 +59,7 @@
 
         </form>
         <div class="my-12">
-            <a href="{{ route("packages.index") }}" class="bg-blue  p-4 mr-3 text-white font-bold">Terug naar arrangementen</a>
+            <a href="{{ route("packages.index") }}" class="bg-blue hover:bg-blue500  p-4 mr-3 text-white font-bold">Terug naar arrangementen</a>
         </div>
     </section>
 @endsection
