@@ -100,8 +100,8 @@ class TimeslotController extends Controller
      */
     public function destroy(Timeslot $timeslot): RedirectResponse
     {
-        $timeslot->delete();
-        return redirect()->route('timeslots.index');
+        DB::table('timeslots')->where('id', '=', $timeslot->id)->delete();
+        return redirect()->route('timeslots.index', $timeslot->package->id);
     }
 
     /**
