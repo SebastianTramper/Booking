@@ -36,7 +36,7 @@
             </div>
         </form>
         <div class="mt-12">
-            <a href="{{ route("timeslots.index", $package_id) }}" class="bg-blue  p-4 mr-3 text-white font-bold">Terug naar tijdsloten</a>
+            <a href="{{ route("timeslots.index", $package_id) }}" class="bg-blue hover:bg-blue500 p-4 mr-3 text-white font-bold">Terug naar tijdsloten</a>
         </div>
     </section>
 
