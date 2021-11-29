@@ -86,6 +86,7 @@ class PackageController extends Controller
         return view("packages.edit", [
             "id" => $package->id,
             "name" => $package->name,
+            "excerpt" => $package->excerpt,
             "description" => $package->description,
             "image_url" => $package->image_url,
             "price" => $package->price

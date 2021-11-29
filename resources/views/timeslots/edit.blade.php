@@ -11,7 +11,7 @@
         </div>
 
 
-        <form action="{{ route("timeslots.update", $id) }}" method="POST" class=" pt-6 pb-8 mb-4">
+        <form action="{{ route("timeslots.update", $id) }}" method="POST" class="pt-6 pb-8 mb-4">
             @csrf
             @method("Put")
 
