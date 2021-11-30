@@ -6,7 +6,7 @@
             <h1 class="text-3xl"> Arrangement <strong> {{ $name }} </strong></h1>
         </div>
 
-        <form action="/packages/update/{{ $id }}" method="POST" class="pt-6 pb-8 mb-4">
+        <form action="/packages/update/{{ $id }}" method="POST" class="pt-6 pb-8 mb-4" enctype="multipart/form-data">
             @csrf
             @method("PUT")
 
@@ -37,7 +37,7 @@
 
             <div>
                 <label for="image_url">Afbeelding</label>
-                <input id="image_url" name="image_url" type="text" value="{{ $image_url }}"
+                <input id="image_url" name="image_url" type="file" value="{{ $image_url }}"
                        class="@error('image_url') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2">
                 @error('image_url')
                 <div class="alert alert-danger">{{ $message }}</div>

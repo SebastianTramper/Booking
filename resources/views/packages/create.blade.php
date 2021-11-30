@@ -5,7 +5,7 @@
         <div class="mt-10 mb-5">
             <h1 class="text-3xl"> Arrangement Aanmaken</h1>
         </div>
-        <form action="{{ route("packages.store") }}" method="POST">
+        <form action="{{ route("packages.store") }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div>
@@ -34,7 +34,7 @@
 
             <div>
                 <label for="image_url">Afbeelding</label>
-                <input id="image_url" name="image_url" type="text" class="@error('image_url') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2">
+                <input id="image_url" name="image_url" type="file" class="@error('image_url') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2">
                 @error('image_url')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

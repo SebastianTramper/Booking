@@ -40,7 +40,8 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-500">
-                                        {{ $package->image_url }}
+                                        <img style="max-width: 100px;"
+                                             src="{{ asset('storage/' . $package->image_url) }}">
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

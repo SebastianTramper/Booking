@@ -21,21 +21,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name("home.index");
 
 
-Route::get('/packages', [PackageController::class, 'index'])->name("packages.index");
 Route::get('/packages/show/{id}', [PackageController::class, 'show'])->name("packages.show");
-Route::get('/packages/create', [PackageController::class, 'create'])->name("packages.create");
-Route::post('/packages/store', [PackageController::class, 'store'])->name("packages.store");
-Route::get('/packages/edit/{id}', [PackageController::class, 'edit'])->name("packages.edit");
-Route::put('/packages/update/{id}', [PackageController::class, 'update'])->name("packages.update");
-Route::delete('/packages/delete/{id}', [PackageController::class, 'destroy'])->name("packages.delete");
+Route::get('/packages', [PackageController::class, 'index'])->name("packages.index")->middleware("admin");
+Route::get('/packages/create', [PackageController::class, 'create'])->name("packages.create")->middleware("admin");
+Route::post('/packages/store', [PackageController::class, 'store'])->name("packages.store")->middleware("admin");
+Route::get('/packages/edit/{id}', [PackageController::class, 'edit'])->name("packages.edit")->middleware("admin");
+Route::put('/packages/update/{id}', [PackageController::class, 'update'])->name("packages.update")->middleware("admin");
+Route::delete('/packages/delete/{id}', [PackageController::class, 'destroy'])->name("packages.delete")->middleware("admin");
 
-Route::get('/timeslots/index/{package}', [TimeslotController::class, 'index'])->name("timeslots.index");
-Route::get('/timeslots/create/{package}', [TimeslotController::class, 'create'])->name("timeslots.create");
-Route::post('/timeslots/store/{package}', [TimeslotController::class, 'store'])->name("timeslots.store");
-Route::get('/timeslots/show/{timeslot}', [TimeslotController::class, 'show'])->name("timeslots.show")->middleware("auth");
-Route::get('/timeslots/edit/{timeslot}', [TimeslotController::class, 'edit'])->name("timeslots.edit");
-Route::put('/timeslots/update/{timeslot}', [TimeslotController::class, 'update'])->name("timeslots.update");
-Route::delete('/timeslots/delete/{timeslot}', [TimeslotController::class, 'destroy'])->name("timeslots.delete");
+Route::get('/timeslots/index/{package}', [TimeslotController::class, 'index'])->name("timeslots.index")->middleware("admin");
+Route::get('/timeslots/create/{package}', [TimeslotController::class, 'create'])->name("timeslots.create")->middleware("admin");
+Route::post('/timeslots/store/{package}', [TimeslotController::class, 'store'])->name("timeslots.store")->middleware("admin");
+Route::get('/timeslots/show/{timeslot}', [TimeslotController::class, 'show'])->name("timeslots.show")->middleware("admin");
+Route::get('/timeslots/edit/{timeslot}', [TimeslotController::class, 'edit'])->name("timeslots.edit")->middleware("admin");
+Route::put('/timeslots/update/{timeslot}', [TimeslotController::class, 'update'])->name("timeslots.update")->middleware("admin");
+Route::delete('/timeslots/delete/{timeslot}', [TimeslotController::class, 'destroy'])->name("timeslots.delete")->middleware("admin");
 
 
 Route::get('/dashboard', function () {

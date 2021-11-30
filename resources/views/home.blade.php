@@ -16,7 +16,7 @@
                 <div class="rounded overflow-hidden pb-5 border w-full bg-white hover:bg-gray shadow">
                     <a href="{{ route("packages.show", $package->id) }}">
                         <img class="w-full bg-cover"
-                             src="https://3.bp.blogspot.com/-Chu20FDi9Ek/WoOD-ehQ29I/AAAAAAAAK7U/mc4CAiTYOY8VzOFzBKdR52aLRiyjqu0MwCLcBGAs/s1600/DSC04596%2B%25282%2529.JPG">
+                             src="{{ asset('storage/' . $package->image_url) }}">
                         <div class="px-3 pb-2">
                             <div class="pt-2">
                                 <h2 class="text-md font-medium">{{ $package->name }}</h2>

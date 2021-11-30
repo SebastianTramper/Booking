@@ -4,6 +4,8 @@
     <section class="container mx-auto">
 
         <div class="my-10">
+            <img class="w-full bg-cover mb-5"
+                 src="{{ asset('storage/' . $image_url) }}">
             <h1 class="text-3xl mb-4"> {{ $name }} </h1>
             <p>{{ $description }}</p>
             <div class="text-2xl font-bold my-5">
