@@ -29,6 +29,19 @@ class TimeslotController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param Timeslot $timeslot
+     * @return Application|Factory|View
+     */
+    public function show(Timeslot $timeslot){
+
+        return view("timeslots.show",[
+            "timeslot" => $timeslot
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Application|Factory|View

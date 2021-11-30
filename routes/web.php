@@ -32,6 +32,7 @@ Route::delete('/packages/delete/{id}', [PackageController::class, 'destroy'])->n
 Route::get('/timeslots/index/{package}', [TimeslotController::class, 'index'])->name("timeslots.index");
 Route::get('/timeslots/create/{package}', [TimeslotController::class, 'create'])->name("timeslots.create");
 Route::post('/timeslots/store/{package}', [TimeslotController::class, 'store'])->name("timeslots.store");
+Route::get('/timeslots/show/{timeslot}', [TimeslotController::class, 'show'])->name("timeslots.show");
 Route::get('/timeslots/edit/{timeslot}', [TimeslotController::class, 'edit'])->name("timeslots.edit");
 Route::put('/timeslots/update/{timeslot}', [TimeslotController::class, 'update'])->name("timeslots.update");
 Route::delete('/timeslots/delete/{timeslot}', [TimeslotController::class, 'destroy'])->name("timeslots.delete");

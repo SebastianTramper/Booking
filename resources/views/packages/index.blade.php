@@ -78,7 +78,7 @@
 
 
         <div class="mt-4 lg:mt-10">
-            <a href="{{ route('packages.create') }}" class="bg-green p-4 mr-3 text-white font-bold">
+            <a href="{{ route('packages.create') }}" class="bg-green hover:bg-blue500 p-4 mr-3 text-white font-bold">
                 Maak een nieuwe arrangement
             </a>
         </div>

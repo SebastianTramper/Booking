@@ -1,50 +1,21 @@
-<table class="table-auto">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Naam</th>
-        <th>Introductie</th>
-        <th>Beschrijving</th>
-        <th>Afbeelding</th>
-        <th>Prijs</th>
-    </tr>
-    </thead>
+@extends('layouts.app')
+@section('content')
 
-    <tbody>
-    <tr>
-        <td>
-            {{ $name }}
-        </td>
-        <td>
-            {{ $excerpt }}
-        </td>
-        <td>
-            {{ $description }}
-        </td>
-        <td>
-            {{ $image_url }}
-        </td>
-        <td>
-            {{ $price }}
-        </td>
-        <td>
-            <a href="{{ route("packages.edit", $id) }}">
-                Aanpassen
-            </a>
-        </td>
-        <td>
-            <form action="{{ route("packages.delete", $id) }}" method="POST">
-                @csrf
-                @method("Delete")
+    <section class="container mx-auto">
 
-                <input type="submit" value="Verwijderen">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+        <div class="my-10">
+            <h1 class="text-3xl mb-4"> {{ $name }} </h1>
+            <p>{{ $description }}</p>
+            <div class="text-2xl font-bold my-5">
+                Prijs: €{{ $price }},-
+            </div>
+            <img src="{{ $image_url }}" alt="">
 
-<a href="{{ route("timeslots.index",$id) }}">Bekijk hier de beschikbaare tijden</a>
+            <div class="my-10">
+                <a href="{{ route("timeslots.show", $id) }}" class="bg-green hover:bg-green500 p-4 mr-3 text-white font-bold">Reserveren</a>
+                <a href="{{ route("packages.index") }}" class="bg-blue hover:bg-blue500 p-4 mr-3 text-white font-bold">Terug naar arrangementen</a>
+            </div>
+        </div>
 
-
-<a href="{{ route("packages.index") }}">Terug naar arrangementen</a>
+    </section>
+@endsection
