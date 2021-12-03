@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\TimeslotController;
@@ -29,7 +30,7 @@ Route::get('/packages/edit/{id}', [PackageController::class, 'edit'])->name("pac
 Route::put('/packages/update/{id}', [PackageController::class, 'update'])->name("packages.update")->middleware("admin");
 Route::delete('/packages/delete/{id}', [PackageController::class, 'destroy'])->name("packages.delete")->middleware("admin");
 
-Route::get('/timeslots/index/{package}', [TimeslotController::class, 'index'])->name("timeslots.index")->middleware("admin");
+Route::get('/timeslots/index/{package}', [TimeslotController::class, 'index'])->name("timeslots.index")->middleware("auth");
 Route::get('/timeslots/create/{package}', [TimeslotController::class, 'create'])->name("timeslots.create")->middleware("admin");
 Route::post('/timeslots/store/{package}', [TimeslotController::class, 'store'])->name("timeslots.store")->middleware("admin");
 Route::get('/timeslots/show/{timeslot}', [TimeslotController::class, 'show'])->name("timeslots.show")->middleware("admin");
@@ -37,6 +38,8 @@ Route::get('/timeslots/edit/{timeslot}', [TimeslotController::class, 'edit'])->n
 Route::put('/timeslots/update/{timeslot}', [TimeslotController::class, 'update'])->name("timeslots.update")->middleware("admin");
 Route::delete('/timeslots/delete/{timeslot}', [TimeslotController::class, 'destroy'])->name("timeslots.delete")->middleware("admin");
 
+
+Route::post('/appointments/store/{timeslot}', [AppointmentController::class, 'store'])->name("appointments.store")->middleware("auth");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

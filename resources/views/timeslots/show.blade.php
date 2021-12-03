@@ -40,6 +40,7 @@
                                         </div>
                                     </td>
 
+
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route("timeslots.edit", $timeslot->id) }}"
                                            class="text-blue hover:text-indigo-900">
@@ -52,7 +53,8 @@
                                             @csrf
                                             @method("Delete")
 
-                                            <input type="submit" value="Verwijderen" class="text-red bg-white cursor-pointer">
+                                            <input type="submit" value="Verwijderen"
+                                                   class="text-red bg-white cursor-pointer">
                                         </form>
 
                                     </td>
@@ -68,7 +70,7 @@
         <div class="my-10">
             <a href="{{ route("timeslots.create", $package->id) }}" class="bg-green p-4 mr-3 text-white font-bold">Maak
                 nieuwe datum beschikbaar</a>
-            <a href="{{ route("packages.index") }}" class="bg-blue p-4 mr-3 text-white font-bold">Terug
+            <a href="{{ route("home.index") }}" class="bg-blue p-4 mr-3 text-white font-bold">Terug
                 naar het arrangementen</a>
         </div>
     </div>

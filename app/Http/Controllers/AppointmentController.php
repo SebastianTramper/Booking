@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Timeslot;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use function PHPUnit\Framework\throwException;
 
 class AppointmentController extends Controller
 {
@@ -17,25 +22,27 @@ class AppointmentController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Timeslot $timeslot
+     * @param Appointment $appointment
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Timeslot $timeslot, Appointment $appointment): RedirectResponse
     {
-        //
+
+        $timeslotHasAppointment = DB::table('appointments')->where('timeslot_id', '=', $timeslot->id)->get();
+        if($timeslotHasAppointment->first() == null){
+            $appointment->timeslot_id = $timeslot->id;
+            $appointment->user_id = Auth::user()->id;
+            $appointment->save();
+        }else{
+            abort(403);
+        }
+
+        return redirect()->route('timeslots.index', $timeslot->package->id);
     }
 
     /**
@@ -63,7 +70,7 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */

@@ -14,8 +14,8 @@
             <img src="{{ $image_url }}" alt="">
 
             <div class="my-10">
-                <a href="{{ route("timeslots.show", $id) }}" class="bg-green hover:bg-green500 p-4 mr-3 text-white font-bold">Reserveren</a>
-                <a href="{{ route("packages.index") }}" class="bg-blue hover:bg-blue500 p-4 mr-3 text-white font-bold">Terug naar arrangementen</a>
+                <a href="{{ route("timeslots.index", $id) }}" class="bg-green hover:bg-green500 p-4 mr-3 text-white font-bold">Reserveren</a>
+                <a href="{{ route("home.index") }}" class="bg-blue hover:bg-blue500 p-4 mr-3 text-white font-bold">Terug naar arrangementen</a>
             </div>
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Package;
 use App\Models\Timeslot;
 use Illuminate\Contracts\Foundation\Application;
@@ -10,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Table;
 use Ramsey\Uuid\Type\Time;
 
 class TimeslotController extends Controller
@@ -21,10 +23,15 @@ class TimeslotController extends Controller
      */
     public function index(Package $package)
     {
-        $timeslots = DB::table('timeslots')->where('package_id', '=', $package->id)->get();
+        $timeslots = DB::table('appointments')
+            ->rightJoin('timeslots','timeslots.id', '=', 'appointments.timeslot_id')
+            ->where('package_id', '=', $package->id)
+            ->get();
+
         return view('timeslots.index', [
             'timeslots' => $timeslots,
-            'package' => $package
+            'package' => $package,
+            'role' => auth()->user()->role
         ]);
     }
 
@@ -34,9 +41,10 @@ class TimeslotController extends Controller
      * @param Timeslot $timeslot
      * @return Application|Factory|View
      */
-    public function show(Timeslot $timeslot){
+    public function show(Timeslot $timeslot)
+    {
 
-        return view("timeslots.show",[
+        return view("timeslots.show", [
             "timeslot" => $timeslot
         ]);
     }
@@ -48,7 +56,7 @@ class TimeslotController extends Controller
      */
     public function create(Package $package)
     {
-        return view("timeslots.create",[
+        return view("timeslots.create", [
             "package" => $package
         ]);
     }
@@ -60,7 +68,7 @@ class TimeslotController extends Controller
      * @param Timeslot $timeslot
      * @return RedirectResponse
      */
-    public function store(Request $request,Timeslot $timeslot, Package $package): RedirectResponse
+    public function store(Request $request, Timeslot $timeslot, Package $package): RedirectResponse
     {
 
         $this->validateFormInput($request);
@@ -69,7 +77,7 @@ class TimeslotController extends Controller
         $timeslot->package_id = $package->id;
         $timeslot->save();
 
-        return redirect()->route('timeslots.index',$timeslot->package->id);
+        return redirect()->route('timeslots.index', $timeslot->package->id);
     }
 
     /**
@@ -102,7 +110,7 @@ class TimeslotController extends Controller
         $timeslot->date_to = $request->date_to;
         $timeslot->save();
 
-        return redirect()->route('timeslots.index',$timeslot->package->id);
+        return redirect()->route('timeslots.index', $timeslot->package->id);
 
     }
 
