@@ -40,6 +40,7 @@ Route::delete('/timeslots/delete/{timeslot}', [TimeslotController::class, 'destr
 
 
 Route::post('/appointments/store/{timeslot}', [AppointmentController::class, 'store'])->name("appointments.store")->middleware("auth");
+Route::get('/appointments/', [AppointmentController::class, 'index'])->name("appointments.index")->middleware("admin");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

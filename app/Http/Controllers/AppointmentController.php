@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Timeslot;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function PHPUnit\Framework\throwException;
@@ -15,11 +16,20 @@ class AppointmentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|Response
      */
     public function index()
     {
-        //
+        $appointments = DB::table('appointments')
+            ->join('timeslots','timeslots.id', '=', 'appointments.timeslot_id')
+            ->join('packages','packages.id', '=', 'timeslots.package_id')
+            ->join('users','users.id', '=', 'appointments.user_id')
+            ->select('packages.name', 'users.email', 'timeslots.date_from', 'timeslots.date_to')
+            ->get();
+
+        return view("appointments.index", [
+            'appointments' => $appointments
+        ]);
     }
 
 
@@ -43,50 +53,5 @@ class AppointmentController extends Controller
         }
 
         return redirect()->route('timeslots.index', $timeslot->package->id);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Appointment $appointment)
-    {
-        //
     }
 }

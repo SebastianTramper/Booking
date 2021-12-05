@@ -106,6 +106,7 @@ class PackageController extends Controller
 
         $package->name = $request->name;
         $package->description = $request->description;
+        $package->excerpt = $request->excerpt;
         $package->image_url = $request->file('image_url')->store('packages');
         $package->price = $request->price;
         $package->save();

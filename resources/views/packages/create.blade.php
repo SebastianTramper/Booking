@@ -10,7 +10,7 @@
 
             <div>
                 <label for="name">Naam</label>
-                <input id="name" name="name" type="text" class="@error('name') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2">
+                <input id="name" name="name" type="text" class="@error('name') is-invalid @enderror block text-sm cursor-pointer font-bold mb-2">
                 @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -18,7 +18,7 @@
 
             <div>
                 <label for="excerpt">Introductie</label>
-                <textarea name="excerpt" id="excerpt" cols="40" rows="10" class="@error('excerpt') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2"></textarea>
+                <textarea name="excerpt" id="excerpt" cols="40" rows="10" class="@error('excerpt') is-invalid @enderror block text-sm cursor-pointer font-bold mb-2"></textarea>
                 @error('excerpt')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -26,7 +26,7 @@
 
             <div>
                 <label for="description">Beschrijving</label>
-                <textarea name="description" id="description" class="@error('description') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2" cols="40" rows="10"></textarea>
+                <textarea name="description" id="description" class="@error('description') is-invalid @enderror block text-sm cursor-pointer font-bold mb-2" cols="40" rows="10"></textarea>
                 @error('description')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -34,7 +34,7 @@
 
             <div>
                 <label for="image_url">Afbeelding</label>
-                <input id="image_url" name="image_url" type="file" class="@error('image_url') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2">
+                <input id="image_url" name="image_url"  type="file" class="@error('image_url') is-invalid @enderror block text-sm cursor-pointer font-bold mb-2">
                 @error('image_url')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -42,7 +42,7 @@
 
             <div>
                 <label for="price">Prijs</label>
-                <input id="price" type="text" name="price" class="@error('price') is-invalid @enderror block text-gray-700 text-sm cursor-pointer font-bold mb-2">
+                <input id="price" type="text" name="price" class="@error('price') is-invalid @enderror block text-sm cursor-pointer font-bold mb-2">
                 @error('price')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
